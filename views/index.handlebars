@@ -1,0 +1,69 @@
+  <div class= "container">
+
+      <div class = "grid-x">
+      </div>
+
+      <div class = "grid-x">
+        <div class = "cell large-12 text-center">
+
+        <!--Signup Modal-->
+
+        <div class="tiny reveal text-center" id="signupModal" data-reveal>
+            
+            <h2>sign up</h2>
+
+              <form id = "signupForm"> 
+
+                  <input id = "usernameSu" class = "signup" type = "text" placeholder= "Username, ie. johndoe6">
+                  <input id = "fridgenameSu" class = "signup" type = "text" placeholder= "Fridgename, ie. doe-family">
+                  <input id = "phone" class = "signup" type = "text" placeholder= "Phone number, ie. 0123456789">
+                  <input id = "email" class = "signup" type = "text" placeholder= "Email, ie johndoe@gmail.com">
+
+                  <button id = "signupSub" class="button custom">Sign up</button>
+
+              </form>
+
+        </div>
+
+        <!-- End Sign up Modal-->
+
+        <!--Login Modal-->
+
+        <div class="tiny reveal text-center" id="loginModal" data-reveal>
+
+            <h2>open your fridge.</h2>
+            
+            <form id = "loginForm">
+
+                <input id = "usernameLi" class = "login" type = "text" placeholder= "Username, ie. johndoe6">
+                <input id = "fridgenameLi" class = "login" type = "text" placeholder= "Fridgename, ie. doe-family">
+
+                <button id = "loginButton" class="button custom">Log in</button>
+
+            </form>
+
+        </div>
+
+        <!-- End Login Modal-->
+
+          <h1>fridgeraider.</h1>
+          <button data-open = "signupModal" class="button custom">Sign up</button>
+          <button data-open = "loginModal" class="button custom">Log in</button>
+
+          <!-- <button id = "signup" type = "button" class = "button custom"> Sign up!</button>
+          <button id = "login" type = "button" class = "button custom"> Login!</button> -->
+        </div>
+      </div>
+
+      <div id = "fit">
+      </div>
+
+      
+
+    </div>
+
+    <script>
+
+      $(document).foundation();
+
+    </script>

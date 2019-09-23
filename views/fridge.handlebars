@@ -1,0 +1,92 @@
+    <div class = "background"></div>
+
+    <div class = "container-2">
+
+        <ul class = "menu align-right">
+            <li><a id = "makeRecipe" href="#">Make a recipe >></a></li>
+        </ul>
+
+        <div class= "grid-container">
+
+            <h1 style = "color: black">
+                {{userInfo.fridgeName}}
+            </h1>
+            
+            <div class = "grid-x">
+
+                <div class = "cell medium-4">
+
+                    <div class="callout">
+
+                        <table>
+
+                            <thead>
+                                <th>Item</th>
+                                <th>Expiration Date</th>
+                                <th>Used</th>
+                            </thead>
+
+                            {{#each items}}
+
+                            <tr>
+
+                                <td>{{itemName}}</td>
+
+                                <td>{{expDate}}</td> 
+
+                                <td><button id = "used" type = "button" class = "button fridgePage"> Used </button></td>
+
+                            </tr>
+
+                            {{/each}}
+
+                        </table>
+                    </div>
+                    
+
+            </div>
+
+            <div class = "cell medium-3"></div>
+
+            <div class = "cell medium-5">
+                    <div class="card" style="width: 400px;">
+                        <div class="card-divider">
+                            Add an item!
+                        </div>
+                        <div class="card-section">
+                            <form id = "addItemForm">
+                                
+                                <input id = "usernameInput" type = "hidden" value = {{userInfo.username}}>
+                               
+                                <input id = "userIdInput" type = "hidden" value={{userInfo.id}}>
+                                
+                                <label>Item Name 
+                                    <input id = "itemName" type = "text" placeholder = "Lettuce">
+                                </label>
+
+                                <label>Expiration Date 
+                                    <input id = "expDate" type = "date" placeholder = "12/5/2018">
+                                </label>
+
+                                <div class = "text-center">
+
+                                    <button id = "addItem" type = "submit" class = "button fridgePage"> Add! </button>
+
+                                </div>
+
+                                
+                            </form>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+
+        <div class = "grid-x"> </div>
+
+        <div class = "li-fit-2"></div>
+
+
+    </div>  
+
+    </div>
