@@ -8,8 +8,17 @@ module.exports = function(app) {
   });
 
   app.post("/api/persons", function(req, res) {
-    db.Person.create(req.body).then(function(dbPerson) {
-      res.json(dbPerson);
+    db.Person.findOne({ where: { username: req.body.username } }).then(function(
+      result
+    ) {
+      if (result && result.dataValues) {
+        res.status(400);
+        return res.json({ Error: "Username exists!" });
+      } else {
+        db.Person.create(req.body).then(function(dbPerson) {
+          res.json(dbPerson);
+        });
+      }
     });
   });
 
@@ -23,26 +32,14 @@ module.exports = function(app) {
 
   //================================================================================//
 
-  app.get("/api/items/:username", function (req, res) {
-
-
+  app.get("/api/items/:username", function(req, res) {
     db.Person.findOne({
-      where: {username: req.params.username },
-      attributes: ['id']}).then(
-        function(dbPerson) {
-          return dbPerson.id;
-        }
-      );
-    // let userId = db.Person.findOne({where: { username: req.params.username }, attributes: ['id'] });
-
-    // console.log(userId);
-
-    // db.Items.findAll({ where: { PersonId: userId} }).then(function(dbItems) {
-    //   res.json(dbItems)
-    // });
-
+      where: { username: req.params.username },
+      attributes: ["id"]
+    }).then(function(dbPerson) {
+      return dbPerson.id;
+    });
   });
-
 
   app.post("/api/items/:username", function(req, res) {
     db.Items.create(req.body).then(function(dbItem) {

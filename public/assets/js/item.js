@@ -1,59 +1,47 @@
 $(document).foundation();
 
 $(function() {
+  $("#addItemForm").submit(function(event) {
+    // event.preventDefault()
 
-    $(document).ready(function() {
+    var username = $("#usernameInput")
+      .val()
+      .trim();
+    var userId = $("#userIdInput");
+    var itemName = $("#itemName");
+    var expDate = $("#expDate");
 
-        var username = req.params.username;
+    console.log(itemName, expDate);
 
-        $.ajax("/api/items/" + username, {
-            type: "GET"
-        }).then(
-            function(res) {
-                console.log(res);
-            }
-        );
+    var newItem = {
+      itemName: itemName.val().trim(),
+      expDate: expDate.val().trim(),
+      category: "Produce",
+      PersonId: parseInt(userId.val().trim())
+    };
+
+    $.ajax("/api/items/" + username, {
+      type: "POST",
+      data: newItem
+    }).then(function(res) {
+      res.json(newItem);
+      location.reload();
     });
+  });
 
-    $("#addItemForm").submit(function(event) {
+  $(".use").on("click", function(event) {
+    var id = $(this).data("id");
 
-        // event.preventDefault()
+    var newUseState = {
+      used: 1
+    };
 
-        var username = $("#usernameInput").val().trim();
-        var userId = $("#userIdInput")
-        var itemName = $("#itemName");
-        var expDate = $("#expDate");
-
-        console.log (itemName, expDate);
-        
-        var newItem = {
-            itemName: itemName.val().trim(),
-            expDate: expDate.val().trim(),
-            category: "Produce",
-            PersonId: parseInt(userId.val().trim())
-        }
-
-        $.ajax("/api/items/" + username, {
-            type: "POST",
-            data: newItem
-        }).then(
-            function(res) {
-                res.json(newItem);
-                location.reload();
-            }
-        );
-
-        // var username = "Tam-Hong";
-
-        // $.ajax("/api/items/" + username, {
-        //     type: "GET"
-        // }).then(
-        //     function(res) {
-        //         console.log(res);
-        //     }
-        // );
-
-
-
+    $.ajax("/api/items/" + id, {
+      type: "PUT",
+      data: newUseState
+    }).then(function() {
+      console.log("Item #" + id + "used.");
+      location.reload();
     });
+  });
 });
