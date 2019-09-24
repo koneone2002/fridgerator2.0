@@ -5,7 +5,7 @@ expiration dates by adding and deleting them from their virtual "fridgeraider".
 Users can also easily search for recipes -- using items in their fridge, or that
 they plan to purchase!
 
-[Deployed project link](https://git.heroku.com/vast-fjord-01869.git)
+[Deployed project link](https://vast-fjord-01869.herokuapp.com)
 
 ## Technologies Used
 
